@@ -1,4 +1,5 @@
 <?php
+//now with zero dependencies (unless you count CURL).
 
 $energyApiUsername = 'your_email@wherever.com';
 $energyApiPassword = 'your_password';
