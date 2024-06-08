@@ -1,13 +1,17 @@
-$energyApiUsername = 'youremail@domain.com';
-$energyApiPassword = 'password';
-$energyApiPlantId = xxxx;
+<?php
 
+$energyApiUsername = 'your@email.com';
+$energyApiPassword = 'top_secret_password';
+$energyApiPlantId = <your plant id>;
+ 
 
+$baseUrl = 'https://www.solarkcloud.com';
 $plantId = $energyApiPlantId;
-$url = 'https://pv.inteless.com/oauth/token';
+$url = $baseUrl . '/oauth/token';
 $headers = [
         'Content-Type: application/json;charset=UTF-8', // Set Content-Type header to application/json
- 
+        'origin: ' . $baseUrl . '/oauth/token',
+        'refer: ' . $baseUrl . '/oauth/token'
  
 ];
 $params = [
@@ -15,7 +19,7 @@ $params = [
         'grant_type' => 'password',
         'password' => $energyApiPassword,
         'username' => $energyApiUsername,
-        'source' => 'elinter',
+ 
 ];
 
 $ch = curl_init();
@@ -39,15 +43,16 @@ curl_close($ch);
 $bodyData = json_decode($response, true);
 $data = $bodyData["data"];
 $access_token = $data['access_token'];
+echo $access_token ;
 $currentDateTime = new DateTime('now', new DateTimeZone('America/New_York')); 
 //echo $currentDateTime->format('Y-m-d h:i:s');
 $currentDate =  $currentDateTime->format('Y-m-d');
-$actionUrl = 'https://pv.inteless.com/api/v1/plant/energy/' . $plantId  . '/day?date=' . $currentDate . "&id=" . $plantId . "&lan=en";
-$actionUrl = 'https://pv.inteless.com/api/v1/plant/energy/' . $plantId  . '/flow?date=' . $currentDate . "&id=" . $plantId . "&lan=en"; 
-$actionUrl = 'https://pv.inteless.com/api/v1/plant/energy/' . $plantId  . '/flow';
+$actionUrl = $baseUrl . '/api/v1/plant/energy/' . $plantId  . '/day?date=' . $currentDate . "&id=" . $plantId . "&lan=en";
+$actionUrl = $baseUrl . '/api/v1/plant/energy/' . $plantId  . '/flow?date=' . $currentDate . "&id=" . $plantId . "&lan=en"; 
+$actionUrl = $baseUrl . '/api/v1/plant/energy/' . $plantId  . '/flow';
 $userParams =   [
         'date' => $currentDate,
-        'id' => 16588,
+        'id' => $energyApiPlantId,
         'lan' => 'en'         
 ];
 
