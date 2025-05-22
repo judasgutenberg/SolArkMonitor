@@ -4,4 +4,4 @@ https://github.com/judasgutenberg/SolArk_Live_Data
 
 I've already included this and the live-data API in parts of my ESP8266-base Remote Control project.  See https://github.com/judasgutenberg/Esp8266_RemoteControl.
 
-Update June 7, 2024: SolArk migrated their backend from PowerView to their own domain at Solarkcloud.com.  The API was otherwise unchanged, and was easy to change in this code. It also uncovered some embarassing hardcoded bits I'd overlooked.
+Update June 7, 2024: SolArk migrated their backend from PowerView to their own domain at Solarkcloud.com.  The API was otherwise unchanged, and was easy to change in this code. It also uncovered some embarrassing hardcoded bits I'd overlooked.
