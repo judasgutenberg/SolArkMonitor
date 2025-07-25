@@ -5,7 +5,8 @@ $energyApiPassword = 'top_secret_password';
 $energyApiPlantId = <your plant id>;
  
 
-$baseUrl = 'https://www.solarkcloud.com';
+//$baseUrl = 'https://www.solarkcloud.com';
+$baseUrl = "https://api.solarkcloud.com"; //they randomly changed it at some point in late 2024 or 2025
 $plantId = $energyApiPlantId;
 $url = $baseUrl . '/oauth/token';
 $headers = [
