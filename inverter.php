@@ -62,10 +62,13 @@ $queryString = http_build_query($userParams);
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $actionUrl . "?" . $queryString);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        "Authorization: Bearer " . $access_token, // Set the Authorization header with your token
-        "Accept: application/json",
-    ));
+    $headers = [
+        'Content-Type: application/json;charset=UTF-8',
+        'Origin: https://www.solarkcloud.com',
+        'Referer: https://www.solarkcloud.com',
+        'Accept: application/json',
+        'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36'
+    ];
 $dataResponse = curl_exec($ch);
 var_dump($dataResponse);
 curl_close($ch);
